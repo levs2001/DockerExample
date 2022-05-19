@@ -1,0 +1,48 @@
+1) Выступление Степы по теории
+
+2) Быстро рассказываю на примере python проекта, как работать с докером
+
+3) Рассказываю на примере проекта DockerExample, как пользоваться Docker
+	- Показываю Dockerfile, объясняю все команды
+	- Затем провожу docker build
+	- Затем показываю, что теперь у нас есть такой образ
+	- Затем провожу запуск, показываю что произошло
+	- Умышленно ломаю тест и показываю, что docker build не сработал
+	- Рассказываю про env переменные
+	
+4) Запускаю с помощью докер наши автотесты для ОК
+
+docker build . # Создает image
+docker build -t IMAGE_NAME . # Создает образ с данным именем
+docker build -t IMAGE_NAME:VERSION . # Если вы что-то изменили, необязательно создавать новый образ, можно создать другую версию
+docker build --build-arg driver.type=webdriver.chrome.driver --build-arg driver.path=./driver/windows/chromedriver.exe --build-arg ok.login=event2 --build-arg ok.password=private -t autotests_image .
+
+docker run IMAGE_NAME_OR_ID # Создает контейнер на основе образа
+docker run -p (дальше параметры) # На основе image запускается container
+docker run -d # Запуск в detached моде (консоль не перехватывает)
+docker run --name CONTAINER_NAME # Можно задать имя контейнера
+docker run --rm # Как только остановится данный контейнер он будет автоматически удален
+docker rmi IMAGE_ID_OR_NAME # Удаляет image
+docker run -e NAME="name" # Можно задавать свои env переменные Пример: docker run -e NAME='Leo' docker_example_image
+docker run --env-file ./config/.env # Указали путь к файлу, в котором лежат env переменные Пример: docker run --env-file ./config/.env --name docker_example_container_efile docker_example_image
+
+
+# env переменные удобно хранить в конфиге
+
+docker .. # Чтобы запустить уже готовый контейнер
+docker ps # Список запущенных контейнеров (которые работают прямо сейчас)
+docker ps -a  # Список созданных контейнеров
+docker attach CONTAINER_ID_OR_NAME # Подключение к процессу данного контейнера через консоль
+docker logs CONTAINER_ID_OR_NAME # Посмотреть, что выводил данный контейнер
+docker container prune # Удаляет все контейнеры
+docker rm CONTAINER_ID_OR_NAME # Удаляет контейнер
+docker start CONTAINER_ID_OR_NAME # Start stopped container
+docker start CONTAINER_ID_OR_NAME # Start stopped container (attach container's STDIN)
+
+# Если после команды написать --help, то можно посмотреть, что она делает
+
+Ссылки:
+https://codefresh.io/docs/docs/learn-by-example/java/gradle/ (сборка gradle проекта с пом. докера)
+https://codestijl.dev/2020/09/14/a-gradle-build-in-docker/ (сборка gradle проекта с пом. докера [удобный шаблон])
+https://www.youtube.com/watch?v=n9uCgUzfeRQ&list=WL&index=1&t=3419s&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BB%D0%B5%D0%BD%D0%9C%D0%B8%D0%BD%D0%B8%D0%BD (Видеоурок по докеру на примере node.js)
+
