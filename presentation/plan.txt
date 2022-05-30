@@ -41,8 +41,13 @@ docker start CONTAINER_ID_OR_NAME # Start stopped container (attach container's 
 
 # Если после команды написать --help, то можно посмотреть, что она делает
 
+Связь докера и CI
+Docker must have Лёша devops
+Docker и Amazon (Вова и дядя)
+
 Ссылки:
 https://codefresh.io/docs/docs/learn-by-example/java/gradle/ (сборка gradle проекта с пом. докера)
 https://codestijl.dev/2020/09/14/a-gradle-build-in-docker/ (сборка gradle проекта с пом. докера [удобный шаблон])
 https://www.youtube.com/watch?v=n9uCgUzfeRQ&list=WL&index=1&t=3419s&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BB%D0%B5%D0%BD%D0%9C%D0%B8%D0%BD%D0%B8%D0%BD (Видеоурок по докеру на примере node.js)
+
 
